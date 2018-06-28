@@ -1,0 +1,50 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="Id">
+    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <td mat-cell *matCellDef="let list"> {{list.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let list"> {{list.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Year">
+    <th mat-header-cell *matHeaderCellDef> Year </th>
+    <td mat-cell *matCellDef="let list"> {{list.year}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Director">
+    <th mat-header-cell *matHeaderCellDef> Director </th>
+    <td mat-cell *matCellDef="let list"> {{list.director}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Genre">
+    <th mat-header-cell *matHeaderCellDef> Genre </th>
+    <td mat-cell *matCellDef="let list"> {{list.genre}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Cast">
+    <th mat-header-cell *matHeaderCellDef> Cast </th>
+    <td mat-cell *matCellDef="let list"> {{list.cast}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Delete">
+      <th mat-header-cell *matHeaderCellDef> Delete </th>
+      <td mat-cell *matCellDef="let list"> 
+          <button mat-button color="warn" (click)="deleteList(list); $event.stopPropagation();">Delete</button>
+      </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Edit">
+    <th mat-header-cell *matHeaderCellDef> Edit </th>
+    <td mat-cell *matCellDef="let list"> 
+        <button mat-button color="warn" (click)="openDialog(list); $event.stopPropagation();">Edit</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+</table>
+
+<button (click)='openDialog()'>Add</button>
